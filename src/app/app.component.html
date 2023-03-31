@@ -1,0 +1,48 @@
+<h1>Ng For</h1>
+
+
+
+<hr>
+<h1>ngIf</h1>
+<input type="text" required [(ngModel)]="person.name" >
+<p *ngIf="person.name === 'Javier' || person.name === 'javier'; else block"> Soy Javier </p>
+<p *ngIf="person.name !== 'Javier' && person.name !== 'javier'"> Yo no soy Javier </p>
+<ng-template #block>
+  <p>No soy Javier con el else</p>
+</ng-template>
+
+<hr>
+<h1>Ng model</h1>
+<h1>Mi nombre es {{person.name}}</h1>
+<input type="text" [(ngModel)]="person.name" >
+<input type="number"  max="50" min="30" required #ageInput="ngModel" [(ngModel)]="person.age" >
+<p>Valid: {{ ageInput.valid }}</p>
+<h1>Eventos</h1>
+<button [disabled]="buttondisable">Enviar</button>
+<button (click)="togglebutton()">toggle button</button>
+<p>Edad {{person.age}}</p>
+<button (click)="masedad()">Aumentar edad</button>
+<hr>
+<div class="box" (scroll)="onscroll($event)">
+  <p>Aprendiendo Angular a toda máquina Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, eligendi eos laborum impedit deserunt tenetur labore molestias, quia consectetur tempora omnis, praesentium doloremque? Aut aspernatur suscipit necessitatibus, corrupti facilis fuga.</p>
+</div>
+<h1>Mi nombre es {{person.name}}</h1>
+<input type="text" [value]="person.name" (keyup)="onChange($event)">
+
+
+<h1>Propiedades</h1>
+<button [disabled]="buttondisable">Enviar</button>
+<input type="text" [value]="person.name">
+<progress [max]='100' [value]= "person.age"></progress>
+<img [src]="person.img" alt="">
+
+<hr>
+<h1>Hola mundo!</h1>
+
+<h2>{{'Hola mundo!'.repeat(3)}}</h2>
+
+<h2>2+4={{2+4}}</h2>
+
+<h3>Hola!! mi nombre es {{name}} y tengo {{age}} años</h3>
+
+<img src={{img}} alt="image">

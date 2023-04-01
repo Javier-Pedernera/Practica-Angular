@@ -1,6 +1,58 @@
+.line-error{
+  height: 0;
+  border-bottom: 3px solid;
+  &.invalid{
+    border-color: red;
+    color: red($color: #000000);
+  }
+  &.valid{
+    border-color: rgb(40, 184, 40);
+  }
+}
+.invalidtext{
+  color: red;
+  transition: all 2s;
+}
+.validtext{
+  transition: all 1s;
+  color: transparent;
+}
+.message-error{
+  &.invalidtext{
+    border-color: red;
+    color: red;
+    transition: all 2s;
+  }
+  &.validtext{
+    transition: all 1s;
+    color: transparent;
+  }
+}
 .box{
+  margin: 10px;
   height: 200px;
   width: 200px;
   overflow: auto;
   background-color: rgb(76, 76, 156);
+
 }
+.box-wine{
+  width: 100%;
+  background-color: rgb(171, 199, 200);
+  border-radius: 20px;
+}
+.products--grid{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px
+  }
+
+
+@media screen and (min-width: 40em) {
+.products--grid{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 10px
+}
+}
+

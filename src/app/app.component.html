@@ -1,5 +1,98 @@
-<h1>Ng For</h1>
+<h1>Formulario completo:</h1>
+<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+  <div class="input-group">
+    <label for="">Nombre:</label>
+    <input type="text" name="name" required id="name" [(ngModel)]="register.name">
+    <p [ngClass]="{
+    'validtext': register.name,
+    'invalidtext': !register.name
+  }">Debe ingresar un nombre</p>
+    <label for="">Email:</label>
+    <input type="email" name="email" required id="email" [(ngModel)]="register.email">
+    <p [ngClass]="{
+    'validtext': register.email,
+    'invalidtext': !register.email
+  }">Debe ingresar un email</p>
+    <label for="">Password:</label>
+    <input type="password" name="password" required id="password" [(ngModel)]="register.password">
+    <p [ngClass]="{
+    'validtext': register.password,
+    'invalidtext': !register.password
+  }">Debe ingresar un password</p>
+    <button type="submit" [disabled]="myForm.invalid"> Send </button>
+  </div>
 
+
+</form>
+
+
+<h1>Ng class & ng style</h1>
+
+<input type="text" #nameInput4="ngModel" required [(ngModel)]="person2.name" />
+<hr class="line-error"
+[ngClass]="{
+  'valid': nameInput4.valid,
+  'invalid': nameInput4.invalid
+}"
+/>
+<p class="message-error"
+[ngClass]="{
+  'validtext': nameInput4.valid,
+  'invalidtext': nameInput4.invalid
+}">
+  El campo es requerido
+</p>
+
+<div class="styles">
+  <div>
+    <input type="number" [(ngModel)]="box.width" />
+    <input type="number" [(ngModel)]="box.height" />
+    <input type="color" [(ngModel)]="box.color"/>
+  </div>
+  <div [ngStyle]="{
+    'width.px': box.width,
+    'height.px': box.height,
+    'background-color': box.color,
+    'display': block,
+    'margin': '10px'
+  }">
+
+  </div>
+</div>
+
+
+<h1> ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name" >
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'Agustin'"> Soy Agustin</p>
+  <p *ngSwitchCase="'Javier'"> Soy Javier</p>
+  <p *ngSwitchDefault> No coincide con ningun miembro</p>
+</div>
+
+
+<h1> ngFor Objs</h1>
+Lista de vinos:
+<div class="products--grid">
+
+  <div *ngFor="let product of products">
+    <h1>Name: {{product.name}}</h1>
+    <h2>Price: {{product.price}}</h2>
+    <h3>Quantity: {{product.quantity}}</h3>
+    <img [src]="product.image" class="box-wine" alt="image">
+    <hr>
+  </div>
+</div>
+
+<h1>Ng For</h1>
+<input type="text" required [(ngModel)]="newMember" >
+<button (click)="addMember()"> Add new member</button>
+<ul>
+  <p *ngIf="family.length === 0">The family has no members</p>
+  <li *ngFor="let name of family; index as indice">
+    {{name}} mi indice es {{indice}}
+    <button (click)="deleteMember(name)">x</button>
+  </li>
+</ul>
 
 
 <hr>
@@ -34,7 +127,7 @@
 <button [disabled]="buttondisable">Enviar</button>
 <input type="text" [value]="person.name">
 <progress [max]='100' [value]= "person.age"></progress>
-<img [src]="person.img" alt="">
+<img [src]="person.img" width="100%" alt="">
 
 <hr>
 <h1>Hola mundo!</h1>
@@ -45,4 +138,4 @@
 
 <h3>Hola!! mi nombre es {{name}} y tengo {{age}} años</h3>
 
-<img src={{img}} alt="image">
+<img src={{img}} width="100%" alt="image">
